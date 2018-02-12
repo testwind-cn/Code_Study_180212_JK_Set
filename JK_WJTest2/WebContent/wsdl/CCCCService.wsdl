@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://DefaultNamespace" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://DefaultNamespace" xmlns:intf="http://DefaultNamespace" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://DefaultNamespace" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="divide">
+    <complexType>
+     <sequence>
+      <element name="x" type="xsd:float"/>
+      <element name="y" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="divideResponse">
+    <complexType>
+     <sequence>
+      <element name="divideReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="multiply">
+    <complexType>
+     <sequence>
+      <element name="x" type="xsd:float"/>
+      <element name="y" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="multiplyResponse">
+    <complexType>
+     <sequence>
+      <element name="multiplyReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="minus">
+    <complexType>
+     <sequence>
+      <element name="x" type="xsd:float"/>
+      <element name="y" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="minusResponse">
+    <complexType>
+     <sequence>
+      <element name="minusReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="plus">
+    <complexType>
+     <sequence>
+      <element name="x" type="xsd:float"/>
+      <element name="y" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="plusResponse">
+    <complexType>
+     <sequence>
+      <element name="plusReturn" type="xsd:float"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="plusResponse">
+
+      <wsdl:part element="impl:plusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="divideResponse">
+
+      <wsdl:part element="impl:divideResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="plusRequest">
+
+      <wsdl:part element="impl:plus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="minusRequest">
+
+      <wsdl:part element="impl:minus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="minusResponse">
+
+      <wsdl:part element="impl:minusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="divideRequest">
+
+      <wsdl:part element="impl:divide" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="multiplyResponse">
+
+      <wsdl:part element="impl:multiplyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="multiplyRequest">
+
+      <wsdl:part element="impl:multiply" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CCCCService">
+
+      <wsdl:operation name="divide">
+
+         <wsdl:input message="impl:divideRequest" name="divideRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:divideResponse" name="divideResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="multiply">
+
+         <wsdl:input message="impl:multiplyRequest" name="multiplyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:multiplyResponse" name="multiplyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="minus">
+
+         <wsdl:input message="impl:minusRequest" name="minusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:minusResponse" name="minusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="plus">
+
+         <wsdl:input message="impl:plusRequest" name="plusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:plusResponse" name="plusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CCCCServiceSoapBinding" type="impl:CCCCService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="divide">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="divideRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="divideResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="multiply">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="multiplyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="multiplyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="minus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="minusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="minusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="plus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="plusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="plusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CCCCServiceService">
+
+      <wsdl:port binding="impl:CCCCServiceSoapBinding" name="CCCCService">
+
+         <wsdlsoap:address location="http://localhost:8080/WJTest2/services/CCCCService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

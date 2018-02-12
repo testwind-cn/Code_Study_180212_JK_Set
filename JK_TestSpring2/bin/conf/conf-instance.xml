@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	  <!--使用默认构造参数--> 
+    <bean id="helloWorldWithNoArgs" 
+    class="com.jike.spring.chapter04.instance.HelloWorldImpl" />
+
+    <!--使用有参数构造参数-->  
+    <bean id="helloWorldWithArgs" 
+    class="com.jike.spring.chapter04.instance.HelloWorldImpl" >
+        <!-- 指定构造器参数 -->  
+        <constructor-arg index="0" value="Hello Args!"/>  
+    </bean>
+    
+    
+    <!--静态工厂方式-->  
+    <bean id="helloWorldStaticFactory" 
+     class="com.jike.spring.chapter04.instance.HelloWorldStaticFactory" 
+     factory-method="newInstance" >
+        <!-- 指定构造器参数 -->  
+        <constructor-arg index="0" value="Hello Static Factory!"/>  
+    </bean>
+    
+    <!-- 1、定义实例工厂Bean -->
+    <bean id="helloWorldInstanceFactory" 
+    class="com.jike.spring.chapter04.instance.HelloWorldInstanceFactory" />
+    <!-- 2、使用实例工厂Bean创建Bean -->
+    <bean id="helloWorldInstance" factory-bean="helloWorldInstanceFactory" factory-method="newInstance">
+         <constructor-arg index="0" value="Hello Instance Factory!"></constructor-arg>
+    </bean>
+    
+	
+</beans>
