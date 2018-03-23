@@ -63,7 +63,7 @@ public class LoginPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if ( e.getActionCommand().equals("登录") ) {
+		if ( e.getActionCommand().equals("登录1234") ) {
 			char [] temp_pwd = passwordField.getPassword();
 			String passwd = new String(temp_pwd);
 			MainFram mfrm = (MainFram) getRootPane().getParent();
