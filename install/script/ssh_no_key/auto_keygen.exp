@@ -1,0 +1,38 @@
+#!/usr/bin/expect
+set timeout 2
+spawn ssh-keygen -t rsa
+
+set i 0
+puts "Number of i: $i - 1 \n"
+
+while {$i < 1} {
+    expect {
+         "Enter file in which to save the key (/root/.ssh/id_rsa):" {
+            send "\n";
+            puts "step 1\n"
+            puts "Number of i: $i - 1 \n"
+         }
+         "Enter passphrase (empty for no passphrase):" {
+            send "\n"
+            puts "step 2\n"
+            puts "Number of i: $i - 1 \n"
+         }
+         "Enter same passphrase again:" {
+            send "\n"
+            puts "step 3\n"
+            incr i
+            puts "Number of i: $i - 1 \n"
+         }
+          "Overwrite (y/n)? " {
+                 send "\n"
+                 puts "step 4\n"
+                 incr i
+                 puts "Number of i: $i - 1 \n"
+              }
+     }
+}
+expect eof
+
+
+
+

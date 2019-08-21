@@ -1,0 +1,4 @@
+#!/bin/bash
+#获取绝对路径
+
+readonly INITDIR=$(readlink -m $(dirname $0))

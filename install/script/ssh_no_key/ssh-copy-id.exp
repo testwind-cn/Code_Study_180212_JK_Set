@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+set passwd [lindex $argv 1]
+set hostname [lindex $argv 0]
+puts $hostname
+spawn ssh-copy-id $hostname
+set i 0
+while {$i < 1} {
+    expect {
+             "(yes/no)?" {
+                send "yes\r"
+                puts "step 1\n"
+                puts "Number of i: $i - 1 \n"
+             }
+             "password:" {
+                send "$passwd\r"
+                puts "step 2\n"
+                incr i
+                puts "Number of i: $i - 1 \n"
+             }
+             "already exist on the remote system." {
+                incr i
+             }
+         }
+}
+expect eof
