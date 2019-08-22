@@ -1,4 +1,5 @@
 #!/usr/bin/expect
+
 set passwd [lindex $argv 1]
 set hostname [lindex $argv 0]
 puts $hostname

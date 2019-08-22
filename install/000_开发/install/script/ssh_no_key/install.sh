@@ -1,7 +1,7 @@
 #!/bin/bash
 dbpwd=Risk@2018
 #载入外部函数
-. ./fuctions.sh
+. fuctions.sh
 echo ""
 echo ""
 echo "----------------------------------------"

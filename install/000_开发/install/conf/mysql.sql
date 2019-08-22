@@ -6,9 +6,9 @@
 
 
 -- 设置密码
--- set password = password('Risk@2018');
+-- set password = password('${MYSQL_PWD}');
 -- 授权用户root使用密码passwd从任意主机连接到mysql服务器
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Risk@2018' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '${MYSQL_PWD}' WITH GRANT OPTION;
 flush privileges;
 
 show variables like 'character%';

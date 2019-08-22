@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 # 提供用户交互行 选择是否继续
 function continuefunc()
 {
