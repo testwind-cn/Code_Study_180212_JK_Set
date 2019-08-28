@@ -155,11 +155,11 @@ function func_install_host_file()
     exec_cmd="sed -i ${del_host} /etc/hosts ; sed -i -e '\$a\\${add_host}' /etc/hosts"
 
     # ### 如果加引号，就是传一个字符串参数，如果不加，就是传多个参数
-    echo ${exec_cmd} | sh
+    echo "${exec_cmd}" | sh
 
     local res=$?
 
-    func_log "echo ${exec_cmd} | sh" ${res}
+    func_log "echo \"${exec_cmd}\" | sh" ${res}
 
 
     for pair_ip in ${host_list[*]}
@@ -168,7 +168,7 @@ function func_install_host_file()
         n_name=$(echo ${pair_ip} | awk -F ',' -v OFS=',' '{print $3}')
         if [[ -n ${new_ip} && -n ${n_name} ]]
         then
-            ssh ${new_ip} ${exec_cmd}
+            ssh ${new_ip} "${exec_cmd}"
 
             echo -e "\n\n\n\n"
             ping -c 4 -w 4 ${n_name}
@@ -640,10 +640,10 @@ func_change_mysql_passwd()
 
     if [[ -z $3 ]]
     then
-        echo ${exec_cmd} | sh
+        echo "${exec_cmd}" | sh
 
     else
-        ssh $3 ${exec_cmd}
+        ssh $3 "${exec_cmd}"
     fi
 
     res=$?
@@ -669,13 +669,13 @@ func_set_mysql_root()
 
     if [[ -z $1 ]] ; then func_log "参数不足!! "; return 1 ;fi
 
-    exec_cmd="mysql -uroot -p$1 -e \"$(sed 's/${MYSQL_PWD}/'$1'/g' dbscript/mysql.sql)\""
+    exec_cmd="mysql -uroot -p$1 -e \"$(sed 's/${MYSQL_PWD}/'"$1"'/g' dbscript/mysql.sql)\""
 
     if [[ -z $2 ]]
     then
-        echo ${exec_cmd} | sh
+        echo "${exec_cmd}" | sh
     else
-        ssh $2 ${exec_cmd}
+        ssh $2 "${exec_cmd}"
     fi
 
     res=$?
@@ -864,16 +864,16 @@ ln -s /opt/${java_version} /usr/java/${java_version} "
         ssh ${remote_host} "mkdir -p ${remote_path}"
         scp ${java_file} ${remote_host}:${remote_path}
 
-        ssh ${remote_host} ${exec_cmd}
+        ssh ${remote_host} "${exec_cmd}"
 
         res=$?
 
-        func_log "JAVA_HOME 没有配置，重新安装配置: ssh ${remote_host} ${exec_cmd}" ${res}
+        func_log "JAVA_HOME 没有配置，重新安装配置: ssh ${remote_host} \"${exec_cmd}\"" ${res}
     else
-        echo ${exec_cmd} | sh
+        echo "${exec_cmd}" | sh
 
         res=$?
-        func_log "JAVA_HOME 没有配置，重新安装配置: echo ${exec_cmd} | sh" ${res}
+        func_log "JAVA_HOME 没有配置，重新安装配置: echo \"${exec_cmd}\" | sh" ${res}
     fi
 
     return ${res}
@@ -960,15 +960,15 @@ tar -zxvf ${cm_file} -C /opt/"
     if [[ -z "${remote_host}" ]]
     then
 
-        echo ${exec_cmd_local} | sh
+        echo "${exec_cmd_local}" | sh
         res=$?
-        func_log "echo ${exec_cmd_local} | sh" ${res}
+        func_log "echo \"${exec_cmd_local}\" | sh" ${res}
 
     else
 
-        ssh ${remote_host} ${exec_cmd_1}
+        ssh ${remote_host} "${exec_cmd_1}"
         res=$?
-        func_log "ssh ${remote_host} ${exec_cmd_1}" ${res}
+        func_log "ssh ${remote_host} \"${exec_cmd_1}\"" ${res}
 
 
 #       这里是从笔记本网络拷 tar 文件 过去
@@ -976,16 +976,16 @@ tar -zxvf ${cm_file} -C /opt/"
 #        res=$?
 #        func_log "scp ${cm_file} ${remote_host}:${rm_temp_path}" ${res}
 
-#        ssh ${remote_host} ${exec_cmd_2}
+#        ssh ${remote_host} "${exec_cmd_2}"
 #        res=$?
-#        func_log "ssh ${remote_host} ${exec_cmd_2}" ${res}
+#        func_log "ssh ${remote_host} \"${exec_cmd_2}\"" ${res}
 #       这里是从笔记本网络拷 tar 文件 过去
 
 
 #       这里是从 DVD ISO 解压 tar 文件 过去
-        ssh ${remote_host} ${exec_cmd_iso}
+        ssh ${remote_host} "${exec_cmd_iso}"
         res=$?
-        func_log "ssh ${remote_host} ${exec_cmd_iso}" ${res}
+        func_log "ssh ${remote_host} \"${exec_cmd_iso}\"" ${res}
 #       这里是从 DVD ISO 解压 tar 文件 过去
 
      fi
@@ -1126,7 +1126,7 @@ ln -f -s /opt/${cdh_version}/share/cmf/common_jars/${real_file} /usr/share/java/
         res=$?
         func_log "cp -f ${mysql_con} ${java_home}/jre/lib/ext/" ${res}
 
-        echo ${exec_cmd} | sh
+        echo "${exec_cmd}" | sh
         res=$?
         func_log "echo ${exec_cmd} | sh" ${res}
     else
@@ -1138,9 +1138,9 @@ ln -f -s /opt/${cdh_version}/share/cmf/common_jars/${real_file} /usr/share/java/
         res=$?
         func_log "scp ${mysql_con} ${remote_host}:${java_home}/jre/lib/ext/" ${res}
 
-        ssh ${remote_host} ${exec_cmd}
+        ssh ${remote_host} "${exec_cmd}"
         res=$?
-        func_log "ssh ${remote_host} ${exec_cmd}" ${res}
+        func_log "ssh ${remote_host} \"${exec_cmd}\"" ${res}
      fi
 
      return ${res}
