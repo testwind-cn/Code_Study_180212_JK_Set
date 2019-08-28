@@ -1,0 +1,26 @@
+#!/usr/bin/expect
+# http://www.waitig.com
+# for Bob testing
+#
+puts "---1---"
+for {set i 0} {$i < 10} {incr i} {
+      puts "I inside first loop: $i"
+}
+
+
+set i 0
+    while {$i < 10} {
+        puts "I inside third loop: $i"
+        incr i
+        puts "I after incr: $i"
+    }
+
+set loop_1 0
+while {$loop_1 < 2} {
+	puts "test loop .."
+	incr loop_1
+}
+spawn  ping 10.2.202.199 -c5\r
+expect {
+	"64 bytes"{ send "ok" }
+}

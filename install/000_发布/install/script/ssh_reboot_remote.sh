@@ -1,0 +1,5 @@
+ssh nn2 "reboot"
+ssh dn1 "reboot"
+ssh dn2 "reboot"
+ssh dn3 "reboot"
+ssh dn4 "reboot"

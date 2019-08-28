@@ -15,7 +15,7 @@ function func_continue()
         ;;
         *)
             echo "内容不匹配"
-            continuefunc
+            func_continue
         ;;
     esac
 }

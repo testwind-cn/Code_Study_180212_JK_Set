@@ -1,5 +1,4 @@
 #!/usr/bin/expect
-
 set passwd [lindex $argv 1]
 set hostname [lindex $argv 0]
 puts $hostname
@@ -14,19 +13,11 @@ while {$i < 1} {
              }
              "password:" {
                 send "$passwd\r"
-                puts "step 2   Enter password \n"
-
+                puts "step 2\n"
                 incr i
                 puts "Number of i: $i - 1 \n"
              }
              "already exist on the remote system." {
-                puts "step 2   Already exist \n"
-
-                incr i
-             }
-             "EEROR" {
-                puts "step 2   出错了 \n"
-
                 incr i
              }
          }
