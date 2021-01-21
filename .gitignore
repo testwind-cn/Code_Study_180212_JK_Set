@@ -7,6 +7,9 @@ build/
 bin/
 */bin/
 
+.settings/
+*/.settings/
+
 # Compiled class file
 *.class
 
